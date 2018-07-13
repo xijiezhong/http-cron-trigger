@@ -8,8 +8,10 @@ trigger a http request by cron scheduler
 
 # trigger schema
 
-TRIGGER_$n: "$cron | $url"
+TRIGGER_$n: "$cron | $url | $method"
+
+default method: get
 
 # example
 
-TRIGGER_1: "0 0 1 * * * | http://www.google.com"
+TRIGGER_1: "0 0 1 * * * | http://www.google.com | get"

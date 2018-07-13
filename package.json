@@ -1,7 +1,7 @@
 {
   "name": "cron-http-trigger",
   "main": "index.js",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "scripts": {
     "start": "node index.js",
     "lint": "eslint .",

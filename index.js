@@ -5,13 +5,15 @@ const extractTriggers = require('./lib/extractTriggers')
 
 const triggers = extractTriggers(process.env)
 
-triggers.forEach(([cron, url]) => {
+logger.info("service start")
+
+triggers.forEach(([cron, url, method = "get"]) => {
   schedule.scheduleJob(cron, async () => {
-    const response = await fetch(url)
+    const response = await fetch(url, {method: method})
     if (!response.ok) {
-      logger.error('fail to request url: ', url)
+      logger.error('fail to request url: ', url, method)
       return
     }
-    logger.info('success to request url: ', url)
+    logger.info('success to request url: ', url, method)
   })
 })
